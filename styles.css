@@ -32,7 +32,7 @@ background: linear-gradient(to right,#00AAFF, #00FF6c);
 }
 
 .span-two {
-    grid-column: span 2;
+    grid-column:span 2;
 }
 
 .output {
