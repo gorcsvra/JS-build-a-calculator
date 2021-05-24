@@ -34,7 +34,7 @@ class Calculator {
         let computation
         const prev = parseFloat(this.previousOperand)
         const current = parseFloat(this.currentOperand)
-        if (isNan(prev) || isNaN(current)) return
+        if (isNaN(prev) || isNaN(current)) return
         switch (this.operation) {
             case '+':
                 computation = prev + current
@@ -58,7 +58,7 @@ class Calculator {
 
     getDisplayNumber(number) {
         const stringNumber = number.toString()
-        const integerDigits = parseFloat(stringNumber.split('')[0])
+        const integerDigits = parseFloat(stringNumber.split('.')[0])
         const decimalDigits = stringNumber.split('.')[1]
         let integerDisplay
         if (isNaN(integerDigits)) {
@@ -74,7 +74,7 @@ class Calculator {
     }
 
 
-    updatedisplay() {
+    updateDisplay() {
         this.currentOperandTextElement.innerText =
             this.getDisplayNumber(this.currentOperand)
         if (this.operation != null) {
@@ -94,7 +94,7 @@ const allClearButton = document.querySelector('[data-all-clear]')
 const previousOperandTextElement = document.querySelector('[data-previous-operand]')
 const currentOperandTextElement = document.querySelector('[data-current-operand]')
 
-const calculator = new Calculator(previousOperandTextElement, currentOperatorTextelElement)
+const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement)
 
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
@@ -111,15 +111,15 @@ operationButtons.forEach(button => {
 
 equalsButton.addEventListener('click', button => {
     calculator.compute()
-    calculator.updatedisplay()
+    calculator.updateDisplay()
 })
 
 allClearButton.addEventListener('click', button => {
     calculator.clear()
-    calculator.updatedisplay()
+    calculator.updateDisplay()
 })
 
 deleteButton.addEventListener('click', button => {
     calculator.delete()
-    calculator.updatedisplay()
+    calculator.updateDSisplay()
 })
